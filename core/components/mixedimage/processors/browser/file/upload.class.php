@@ -88,6 +88,11 @@ class mixedimageBrowserFileUploadProcessor extends modBrowserFileUploadProcessor
 
         // Do the upload
         $success = $this->source->uploadObjectsToContainer($path, $files);
+        $uplobj_i=0;
+        foreach($files as $i=>$file){
+        	$files[$i]['name']=$this->source->uploaded_objects[$uplobj_i];
+        	$uplobj_i++;
+        }
 
         // Check for upload errors
         if (empty($success)) {
